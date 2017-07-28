@@ -1,3 +1,3 @@
-function myFunction() {
-  
+function InitTest() {
+  Logger.log('hola sispagos');
 }
