@@ -1,0 +1,19 @@
+<script>
+function VisitorsCounter(){
+  google.script.run.withSuccessHandler(
+    function (visitas){
+      var visits = padCount(visitas, 4);
+      $('nav .counter').html(visits);
+    }
+  ).visitorsCounter();
+}
+
+function padCount (n, length){
+  n = n? n+1 : 0;
+  var  n = n.toString();
+  while(n.length < length){
+    n = "0" + n;
+  }
+  return n;
+}
+</script>

@@ -1,0 +1,100 @@
+<script>
+
+google.script.run.withSuccessHandler(
+  function(ret){
+    var nLoads,laoding;
+    if(undefined != ret){
+      nLoads = ret
+    }
+    nLoads = 0;
+    load(nLoads);
+  }
+).getElems4Loading();
+
+var DB = {
+  icon  : {},
+  user  : {},
+  who   : {},
+  ready : 0,
+}
+
+function who(){
+  google.script.run.withSuccessHandler(
+    function(ret){
+      var dataToObject = DB.who.sspgs = ret;
+    }
+  ).getWho();
+}
+/* welcome and oAuth */
+google.script.run.withSuccessHandler(setWelcomeToEmail).sesion_GSUserEmail();
+
+function setWelcomeToEmail(data){
+  google.script.run.withSuccessHandler(
+    function(ret){
+      var dataToObject = DB.usr = ret;
+      $('header .user .userN').html(DB.usr.email);
+      $('header .user .foto').html('<img src="'+DB.usr.thumb+'" alt="'+DB.usr.name+'">');
+    }
+  ).getProfile();
+  google.script.run
+  .withSuccessHandler(
+    function(usr){
+      DB.usr['perfil'] = usr['perfil'];
+      var usrMail = DB.usr.email;
+      if(usr['access'] == 1){
+        for(var i in usr['perfil']){
+          var key  = i;
+          var item = usr['perfil'][key];
+          var keyMenu = key+'Menu';
+          if(item > 0){
+            $('nav ul li#'+key).attr('class', '');
+            $('nav ul li#'+key+' figure').append(DB.icon[keyMenu]);
+          }else{
+            var keyIcon = key+'MenuI';
+            $('nav ul li#'+key).attr('class', 'inactive');
+            $('nav ul li#'+key+' figure').append(DB.icon[keyIcon]);
+          }
+        }
+      }else{
+        getContent('PG_403', 'Init403');
+      }
+    }
+  )
+  .oAuth(data);
+}
+function onSuccess(){ 
+  getContent('PG_home', 'homeInit');
+  removeModal();
+}
+function Init403(){
+  $('main').css({'width':'100%'});
+}
+/* /welcome and oAuth */
+
+function load(w){
+  var elem  = document.getElementById('bar');   
+  var width = -1;
+  var time  = (w)? (130/36)*w : 40;
+  if(time <= 40){
+    time = 10;
+  }
+  var id = setInterval(frame, time);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+      $('#loading').fadeOut();
+      onSuccess();
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
+
+
+
+
+
+
+
+</script>
