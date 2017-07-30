@@ -1,0 +1,27 @@
+<script>
+function homeInit(){
+  $('nav').fadeIn();
+  $('.trigger').attr('active', '');
+  for(var i in DB.usr.perfil){
+    var key  = i;
+    var item = DB.usr.perfil[key];
+    var keyH = key+'Home';
+    if(item > 0){
+      $('#book_'+key).attr('active', 'active');
+      $('#book_'+key+' figure').append(DB.icon[keyH]);
+    }else{
+      var keyH = key+'HomeI';
+      $('#book_'+key+' figure').append(DB.icon[keyH]);
+    }
+  }
+  $('.trigger').on('click', function(){
+    $('nav ul li').removeClass('active');
+    $('main').html();
+    var rel    = $(this).attr('rel');
+    var active = $(this).attr('active');
+    if(active == 'active'){
+     getContent('PG_'+rel, rel+"Init"); 
+    }
+  });
+}  
+</script>

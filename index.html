@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es/Mx">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <?!= include('css'             );?>
+  <?!= include('CSS_dataTables'  );?>
+  <?!= include('CSS_BtstrpEditor');?>
+  <?!= include('CSS_home'        );?>
+  <?!= include('CSS_tooltip'     );?>
+  <style>
+    #sites-canvas-main{
+      border:solid 1px red !important;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a>
+    <svg id="barras" data-name="barras" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 60">
+      <g id="squares">
+        <rect y="0"  class="bbvaSty1" width="75" height="10"/>
+        <rect y="10" class="bbvaSty2" width="75" height="10"/>
+        <rect y="20" class="bbvaSty3" width="75" height="10"/>
+        <rect y="30" class="bbvaSty4" width="75" height="10"/>
+        <rect y="40" class="bbvaSty5" width="75" height="10"/>
+        <rect y="50" class="bbvaSty6" width="75" height="10"/>
+      </g>
+    </svg>
+  </a>
+  <h1>BBVA Bancomer</h1>
+  <div class="user">
+    <figure class="foto"></figure>
+    <div class="section">Informacional y Finanzas</div>
+    <div class="userN"></div>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li rel="home" alt="Home" title="Home" class="active"><figure id="home"></figure></li>
+    <li id="diccionario" rel="diccionario" alt="Diccionario" title="Diccionario">
+      <figure></figure>
+      <ul class="diccionario">
+        <li rel="dicc_tablas_pi">Diccionarios PI</li>
+        <li rel="dicc_mayas">Mallas</li>
+      </ul>
+    </li>
+    <li id="batch" rel="batch" alt="Batch" title="Batch" class="inactive">
+      <figure></figure>
+      <ul class="batch">
+        <li rel="batch_batchDiario">Batch Diario</li>
+        <li rel="batch_batchMensual">Batch Mensual</li>
+      </ul>
+    </li>
+    <li id="validador" rel="validador" alt="Validador" title="Validador"><figure></figure></li>
+    <li id="gobierno"  rel="gobierno"  alt="Gobierno" title="Gobierno"><figure></figure></li>
+    <li id="wiki"      rel="wiki"      alt="Base of Knowledge" title="Base of Knowledge"><figure></figure></li>
+    <li id="efan"      rel="efan" alt="EFAN" title="EFAN" ><figure></figure></li>
+  </ul>
+  <div class="counter">0000</div>
+</nav>
+<div id="loading"><div id="bar"></div></div>
+<main style="display:none;"></main>
+<footer></footer>
+</body>
+<?!= include('JS_DBs'               );?>
+<?!= include('JS_Icon'              );?>
+<?!= include('JS_visitorsCounter'   );?>
+<?!= include('JS_home'              );?>
+<?!= include('JS_primaryScript'     );?>
+<?!= include('JS_dataTables.editor' );?>
+
+<?!= include('JS_BtstrpTypeHead'    );?>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
