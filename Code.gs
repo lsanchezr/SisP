@@ -1,5 +1,5 @@
 function doGet(){
-  var html = HtmlService.createTemplateFromFile('index').evaluate().setTitle('Develop :: BBVA :: SisPagos');
+  var html = HtmlService.createTemplateFromFile('index').evaluate().setTitle('Develop :: SisPagos ::');
   return html;
 }
 function include(filename){
